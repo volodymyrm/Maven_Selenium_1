@@ -5,11 +5,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Tests {
 
-    private final WebDriver driver = new FirefoxDriver();
+    private final WebDriver driver = new ChromeDriver();
     private final Page eg = new Page(driver);
 
     @Before
