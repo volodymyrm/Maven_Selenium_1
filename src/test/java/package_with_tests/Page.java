@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 
 public class Page {
 
-    By fName = By.className("hook_reg_first_name");
-    By lName = By.className("hook_reg_last_name");
-    By regButton = By.className("form_box_title");
+    By fName = By.id("firstname");
+    By lName = By.id("lastname");
+    By regButton = By.className("button");
 
     private final WebDriver driver;
 
