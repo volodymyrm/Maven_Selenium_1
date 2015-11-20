@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class Test2 {
+public class Tests {
 
     private final WebDriver driver = new FirefoxDriver();
     private final Page eg = new Page(driver);
