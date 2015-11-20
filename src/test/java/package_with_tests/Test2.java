@@ -14,7 +14,7 @@ public class Test2 {
 
     @Before
     public void setUp(){
-        driver.navigate().to("http://staging.crossrider.com/notf_sys_test/mobile_reg/brands/casino_eurogrand/index.html?lang=en");
+        driver.navigate().to(Link.lnk);
     }
     @After
     public void thearDown(){
