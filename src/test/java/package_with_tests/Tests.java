@@ -1,6 +1,7 @@
 package package_with_tests;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -25,7 +26,7 @@ public class Tests {
     }
 
     @Test
-    public void testOne(){
+    public void testInvalidData(){
         eg.typefName("HJGFjgj3*");
         eg.typelName("HJGFjgj3*");
         //eg.setDOB("20", "06", "1990");
@@ -44,8 +45,10 @@ public class Tests {
         eg.submitEmailSubscription();
         eg.submitRegistration();
 
+        Assert.assertEquals("Assertion failll", eg.error_fName_invalid, eg.getfNameErrorField());
+
         try {
-            Thread.sleep(25000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

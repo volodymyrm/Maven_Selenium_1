@@ -22,9 +22,19 @@ public class Page {
     By yearsConfirm = By.xpath("//*[@id='registrationForm']/div[19]");
     By emailSubscription = By.xpath("//*[@id='registrationForm']/div[20]");
     By emailErrorMsg = By.xpath("//div[6]/div[@class='error_message']");
+    //By fNameErrorField = By.xpath("//*[@id='registrationForm']/div[1]/div[3]");
+
+
+    String error_empty_data = "This field is mandatory";
+    String error_fName_invalid = "Please only use letters (a-z) and characters (,-.)";
 
     public Page(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public String getfNameErrorField(){
+        String fNameErrorField = driver.findElement(By.xpath("//*[@id='registrationForm']/div[1]/div[3]")).getText();
+        return fNameErrorField;
     }
 
     public void open(String url){
