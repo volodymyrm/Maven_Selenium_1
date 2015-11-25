@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Tests {
 
-    WebDriver driver;
     Page eg;
 
     @Before
@@ -39,12 +38,4 @@ public class Tests {
         }
     }
 
-  /*  @Test
-    public void testTwo(){
-        Page eg = new Page(driver);
-        eg.typefName("VVVVVVV66^^^");
-        eg.typelName("VVVVVVV66^^^");
-        eg.submitRegistration();
-        driver.close();
-    }*/
 }

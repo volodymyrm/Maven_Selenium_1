@@ -12,8 +12,9 @@ public class Page {
     By lName = By.id("lastname");
     By eMail = By.id("email");
     By regButton = By.className("button");
-
     By emailErrorMsg = By.xpath("//div[6]/div[@class='error_message']");
+
+    //Select selectDay = new Select(driver.findElement(By.xpath("//div[@class = 'datepicker_day datepicker_field']/select")));
 
     public Page(WebDriver driver) {
         this.driver = driver;
@@ -52,7 +53,6 @@ public class Page {
         driver.findElement(eMail).sendKeys(email);
         return this;
     }
-
 
     public Page submitRegistration() {
         driver.findElement(regButton).click();
