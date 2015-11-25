@@ -7,14 +7,10 @@ import org.openqa.selenium.support.ui.Select;
 
 public class Page {
 
-    protected WebDriver driver;
+    WebDriver driver;
     By fName = By.id("firstname");
     By lName = By.id("lastname");
     By eMail = By.id("email");
-
-   /* WebElement day = driver.findElement(By.xpath("//div[@class = 'datepicker_day datepicker_field']/select"));
-    Select selectDay = new Select(day);*/
-
     By regButton = By.className("button");
 
     By emailErrorMsg = By.xpath("//div[6]/div[@class='error_message']");
@@ -23,10 +19,12 @@ public class Page {
         this.driver = driver;
     }
 
- /*   public Page setDOB(String dayvalue){
+    public Page setDOB(String dayvalue){
+        WebElement day = driver.findElement(By.xpath("//div[@class = 'datepicker_day datepicker_field']/select"));
+        Select selectDay = new Select(day);
         selectDay.selectByValue(dayvalue);
         return this;
-    }*/
+    }
 
     public void open(String url){
         driver.get(url);

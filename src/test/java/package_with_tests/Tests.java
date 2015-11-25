@@ -16,11 +16,8 @@ public class Tests {
         System.setProperty("webdriver.chrome.driver", "\\Chromedriver\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         eg = new Page(driver);
-        //eg = PageFactory.initElements(new ChromeDriver(), Page.class);
-        eg.open("http://m-stg-admin.williamhillcasino.com/register2");
+        eg.open(Link.lnk);
         eg.switchToFrame();
-        //driver.navigate().to(Link.lnk);
-        //driver.switchTo().frame(0);
     }
 
     @After
@@ -32,7 +29,7 @@ public class Tests {
     public void testOne(){
         eg.typefName("VovaVova*&*");
         eg.typelName("KHKHHYJJ*");
-     //   eg.setDOB("20");
+        eg.setDOB("20");
         eg.submitRegistration();
 
         try {
