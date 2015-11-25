@@ -28,7 +28,10 @@ public class Tests {
     public void testOne(){
         eg.typefName("VovaVova*&*");
         eg.typelName("KHKHHYJJ*");
-        eg.setDOB("20");
+        eg.setTitle("Mr");
+        eg.typeEmail("sdfsdf@sdfds");
+        eg.setCountry("GB");
+        eg.setDOB("20", "06", "1990");
         eg.submitRegistration();
 
         try {

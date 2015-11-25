@@ -14,17 +14,8 @@ public class Page {
     By regButton = By.className("button");
     By emailErrorMsg = By.xpath("//div[6]/div[@class='error_message']");
 
-    //Select selectDay = new Select(driver.findElement(By.xpath("//div[@class = 'datepicker_day datepicker_field']/select")));
-
     public Page(WebDriver driver) {
         this.driver = driver;
-    }
-
-    public Page setDOB(String dayvalue){
-        WebElement day = driver.findElement(By.xpath("//div[@class = 'datepicker_day datepicker_field']/select"));
-        Select selectDay = new Select(day);
-        selectDay.selectByValue(dayvalue);
-        return this;
     }
 
     public void open(String url){
@@ -48,6 +39,34 @@ public class Page {
         driver.findElement(lName).sendKeys(fname);
         return this;
     }
+
+    public Page setDOB(String dayvalue, String monthvalue, String yearvalue){
+        WebElement day = driver.findElement(By.xpath("//div[@class = 'datepicker_day datepicker_field']/select"));
+        WebElement month = driver.findElement(By.xpath("//div[@class = 'datepicker_month datepicker_field']/select"));
+        WebElement year = driver.findElement(By.xpath("//div[@class = 'datepicker_year datepicker_field']/select"));
+        Select selectDay = new Select(day);
+        Select selectMonth = new Select(month);
+        Select selectYear = new Select(year);
+        selectDay.selectByValue(dayvalue);
+        selectMonth.selectByValue(monthvalue);
+        selectYear.selectByValue(yearvalue);
+        return this;
+    }
+
+    public Page setTitle(String titlevalue){
+        WebElement title = driver.findElement(By.xpath("//*[@id='registrationForm']/div[5]/select"));
+        Select selectTitle = new Select(title);
+        selectTitle.selectByValue(titlevalue);
+        return this;
+    }
+
+    public Page setCountry(String countryvalue){
+        WebElement country = driver.findElement(By.xpath("//*[@id='registrationForm']/div[7]/select"));
+        Select selectCountry = new Select(country);
+        selectCountry.selectByValue(countryvalue);
+        return this;
+    }
+
 
     public Page typeEmail(String email){
         driver.findElement(eMail).sendKeys(email);
