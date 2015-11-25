@@ -3,17 +3,20 @@ package package_with_tests;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public class Tests {
 
+    WebDriver driver;
     Page eg;
 
     @Before
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "\\Chromedriver\\chromedriver.exe");
-        eg = PageFactory.initElements(new ChromeDriver(), Page.class);
+        WebDriver driver = new ChromeDriver();
+        eg = new Page(driver);
+        //eg = PageFactory.initElements(new ChromeDriver(), Page.class);
         eg.open("http://m-stg-admin.williamhillcasino.com/register2");
         eg.switchToFrame();
         //driver.navigate().to(Link.lnk);
