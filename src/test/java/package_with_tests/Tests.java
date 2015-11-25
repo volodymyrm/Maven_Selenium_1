@@ -45,13 +45,13 @@ public class Tests {
         eg.submitEmailSubscription();
         eg.submitRegistration();
 
-        Assert.assertEquals("Assertion failll", eg.error_fName_invalid, eg.getfNameErrorField());
+        Assert.assertEquals(eg.error_fName_invalid, eg.getfNameErrorField());
 
-        try {
+        /*try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
 }
