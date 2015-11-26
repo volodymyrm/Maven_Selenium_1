@@ -10,12 +10,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Tests {
 
     Page eg;
-
     @Before
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "\\Chromedriver\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         eg = new Page(driver);
+
         eg.open(Link.lnk);
         eg.switchToFrame();
     }
