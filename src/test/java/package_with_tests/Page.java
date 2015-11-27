@@ -30,10 +30,6 @@ public class Page {
     Email email;
     Dob dateOfBirth;
 
-
-    String error_empty_data = "This field is mandatory";
-    String error_fName_invalid = "Please only use letters (a-z) and characters (,-.)";
-
     public Page(String link) {
         System.setProperty("webdriver.chrome.driver", "\\Chromedriver\\chromedriver.exe");
         driver = new ChromeDriver();

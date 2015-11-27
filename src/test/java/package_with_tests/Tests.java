@@ -1,6 +1,7 @@
 package package_with_tests;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,9 +26,6 @@ public class Tests {
         //eg.setTitle("Mr");
         eg.email.setValue("HJGFjgj3*");
 
-        System.out.print(eg.firstname.getErrorMessage());
-        System.out.print(eg.lastname.getErrorMessage());
-
         //eg.setCountry("GB");
         //eg.typeCity("HJGFjgj3*");
         //eg.typeAddress("HJGFjgj3*");
@@ -41,7 +39,7 @@ public class Tests {
         //eg.submitEmailSubscription();
         //eg.submitRegistration();
 
-        //Assert.assertEquals(eg.error_fName_invalid, eg.getfNameErrorField());
+        Assert.assertEquals(eg.firstname.errorMsgInvalid, eg.firstname.getErrorMessage());
 
         try {
             Thread.sleep(5000);

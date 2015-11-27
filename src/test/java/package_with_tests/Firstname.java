@@ -9,6 +9,10 @@ public class Firstname {
     WebDriver driver;
     WebElement firstname;
 
+    String errorMsgEmpty = "This field is mandatory";
+    String errorMsgLong = "First name should have 1-50 characters";
+    String errorMsgInvalid = "Please only use letters (a-z) and characters (,-.)";
+
     public Firstname(WebDriver driver, By firstnameField) {
         this.driver = driver;
         firstname = driver.findElement(firstnameField);
