@@ -14,7 +14,7 @@ public class Email {
         email = driver.findElement(emailField);
     }
 
-     public void typeEmail(String emailvalue){
+     public void setValue(String emailvalue){
          email.sendKeys(emailvalue);
     }
 }

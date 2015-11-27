@@ -9,10 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 public class Page {
 
     WebDriver driver;
-    By fName = By.id("firstname");
-    By lName = By.id("lastname");
-    //By eMail = By.id("email");
-    By regButton = By.className("button");
+
     By city = By.id("city");
     By address = By.id("address");
     By zip = By.id("zip");
@@ -22,10 +19,17 @@ public class Page {
     By passwordConfirm = By.id("passwordConfirm");
     By yearsConfirm = By.xpath("//*[@id='registrationForm']/div[19]");
     By emailSubscription = By.xpath("//*[@id='registrationForm']/div[20]");
+
+    By regButton = By.className("button");
+
     By emailErrorMsg = By.xpath("//div[6]/div[@class='error_message']");
     //By fNameErrorField = By.xpath("//*[@id='registrationForm']/div[1]/div[3]");
 
+    Firstname firstname;
+    Lastname lastname;
     Email email;
+    Dob dateOfBirth;
+
 
     String error_empty_data = "This field is mandatory";
     String error_fName_invalid = "Please only use letters (a-z) and characters (,-.)";
@@ -35,12 +39,28 @@ public class Page {
         driver = new ChromeDriver();
         driver.get(link);
         driver.switchTo().frame(0);
+
+        firstname = firstname();
+        lastname = lastname();
         email = email();
+        dateOfBirth = dateOfBirth();
     }
 
+    public Firstname firstname(){
+        return new Firstname(driver,By.id("firstname"));
+    }
+    public Lastname lastname(){
+        return new Lastname(driver,By.id("lastname"));
+    }
     public Email email(){
         return new Email(driver, By.id("email"));
     }
+    public Dob dateOfBirth(){
+        return new Dob(driver, By.xpath("//div[@class = 'datepicker_day datepicker_field']/select"),By.xpath("//div[@class = 'datepicker_month datepicker_field']/select"), By.xpath("//div[@class = 'datepicker_year datepicker_field']/select"));
+    }
+
+
+
 
     public String getfNameErrorField(){
         String fNameErrorField = driver.findElement(By.xpath("//*[@id='registrationForm']/div[1]/div[3]")).getText();
@@ -53,29 +73,6 @@ public class Page {
 
     public void close(){
         driver.quit();
-    }
-
-    public Page typefName(String fname){
-        driver.findElement(fName).sendKeys(fname);
-        return this;
-    }
-
-    public Page typelName(String fname){
-        driver.findElement(lName).sendKeys(fname);
-        return this;
-    }
-
-    public Page setDOB(String dayvalue, String monthvalue, String yearvalue){
-        WebElement day = driver.findElement(By.xpath("//div[@class = 'datepicker_day datepicker_field']/select"));
-        WebElement month = driver.findElement(By.xpath("//div[@class = 'datepicker_month datepicker_field']/select"));
-        WebElement year = driver.findElement(By.xpath("//div[@class = 'datepicker_year datepicker_field']/select"));
-        Select selectDay = new Select(day);
-        Select selectMonth = new Select(month);
-        Select selectYear = new Select(year);
-        selectDay.selectByValue(dayvalue);
-        selectMonth.selectByValue(monthvalue);
-        selectYear.selectByValue(yearvalue);
-        return this;
     }
 
     public Page setTitle(String titlevalue){

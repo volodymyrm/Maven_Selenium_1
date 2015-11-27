@@ -9,7 +9,6 @@ public class Tests {
     Page eg;
     @Before
     public void setUp() {
-
         eg = new Page("http://m-stg-admin.williamhillcasino.com/register2");
     }
 
@@ -20,12 +19,11 @@ public class Tests {
 
     @Test
     public void testInvalidData(){
-        //eg.typefName("HJGFjgj3*");
-        //eg.typelName("HJGFjgj3*");
-        //eg.setDOB("20", "06", "1990");
+        eg.firstname.setValue("HJGFjgj3*");
+        eg.lastname.setValue("HJGFjgj3*");
+        eg.dateOfBirth.setValue("20", "06", "1990");
         //eg.setTitle("Mr");
-        eg.email.typeEmail("HJGFjgj3*");
-        //eg.typeEmail("HJGFjgj3*");
+        eg.email.setValue("HJGFjgj3*");
         //eg.setCountry("GB");
         //eg.typeCity("HJGFjgj3*");
         //eg.typeAddress("HJGFjgj3*");
