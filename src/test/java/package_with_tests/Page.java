@@ -3,6 +3,7 @@ package package_with_tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class Page {
@@ -10,7 +11,7 @@ public class Page {
     WebDriver driver;
     By fName = By.id("firstname");
     By lName = By.id("lastname");
-    By eMail = By.id("email");
+    //By eMail = By.id("email");
     By regButton = By.className("button");
     By city = By.id("city");
     By address = By.id("address");
@@ -24,12 +25,21 @@ public class Page {
     By emailErrorMsg = By.xpath("//div[6]/div[@class='error_message']");
     //By fNameErrorField = By.xpath("//*[@id='registrationForm']/div[1]/div[3]");
 
+    Email email;
 
     String error_empty_data = "This field is mandatory";
     String error_fName_invalid = "Please only use letters (a-z) and characters (,-.)";
 
-    public Page(WebDriver driver) {
-        this.driver = driver;
+    public Page(String link) {
+        System.setProperty("webdriver.chrome.driver", "\\Chromedriver\\chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.get(link);
+        driver.switchTo().frame(0);
+        email = email();
+    }
+
+    public Email email(){
+        return new Email(driver, By.id("email"));
     }
 
     public String getfNameErrorField(){
@@ -43,10 +53,6 @@ public class Page {
 
     public void close(){
         driver.quit();
-    }
-
-    public void switchToFrame(){
-        driver.switchTo().frame(0);
     }
 
     public Page typefName(String fname){
@@ -94,10 +100,10 @@ public class Page {
     }
 
 
-    public Page typeEmail(String email){
+    /*public Page typeEmail(String email){
         driver.findElement(eMail).sendKeys(email);
         return this;
-    }
+    }*/
 
     public Page typeCity(String cityvalue){
         driver.findElement(city).sendKeys(cityvalue);

@@ -2,18 +2,19 @@ package package_with_tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-public class Email extends Page{
+public class Email {
 
-    WebDriver driver1;
-    By eMail = By.id("email");
+    WebDriver driver;
+    WebElement email;
 
-    public Email(WebDriver driver) {
-        super(driver);
+    public Email(WebDriver driver, By emailField) {
+        this.driver = driver;
+        email = driver.findElement(emailField);
     }
 
-     public Email typeEmail(String email){
-        driver1.findElement(eMail).sendKeys(email);
-        return this;
+     public void typeEmail(String emailvalue){
+         email.sendKeys(emailvalue);
     }
 }
