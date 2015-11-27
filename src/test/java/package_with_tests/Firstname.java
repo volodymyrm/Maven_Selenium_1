@@ -17,4 +17,8 @@ public class Firstname {
     public void setValue(String firstnameValue){
         firstname.sendKeys(firstnameValue);
     }
+
+    public String getErrorMessage(){
+        return driver.findElement(By.xpath("//*[@id='registrationForm']/div[1]/div[3]")).getText();
+    }
 }

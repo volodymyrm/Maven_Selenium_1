@@ -59,13 +59,10 @@ public class Page {
         return new Dob(driver, By.xpath("//div[@class = 'datepicker_day datepicker_field']/select"),By.xpath("//div[@class = 'datepicker_month datepicker_field']/select"), By.xpath("//div[@class = 'datepicker_year datepicker_field']/select"));
     }
 
-
-
-
-    public String getfNameErrorField(){
+    /*public String getfNameErrorField(){
         String fNameErrorField = driver.findElement(By.xpath("//*[@id='registrationForm']/div[1]/div[3]")).getText();
         return fNameErrorField;
-    }
+    }*/
 
     public void open(String url){
         driver.get(url);

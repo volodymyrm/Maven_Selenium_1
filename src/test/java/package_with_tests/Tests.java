@@ -24,6 +24,10 @@ public class Tests {
         eg.dateOfBirth.setValue("20", "06", "1990");
         //eg.setTitle("Mr");
         eg.email.setValue("HJGFjgj3*");
+
+        System.out.print(eg.firstname.getErrorMessage());
+        System.out.print(eg.lastname.getErrorMessage());
+
         //eg.setCountry("GB");
         //eg.typeCity("HJGFjgj3*");
         //eg.typeAddress("HJGFjgj3*");
