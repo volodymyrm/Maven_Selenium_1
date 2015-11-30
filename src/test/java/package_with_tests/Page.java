@@ -21,6 +21,7 @@ public class Page {
     Username username;
     Password password;
     Passwordconfirm passwordconfirm;
+    Currency currency;
     Depositlimit depositlimit;
     Bonuscode bonuscode;
     Yearsconfirm yearsconfirm;
@@ -49,6 +50,7 @@ public class Page {
         password = password();
         passwordconfirm = passwordconfirm();
         yearsconfirm = yearsconfirm();
+        currency = currency();
         depositlimit = depositlimit();
         bonuscode = bonuscode();
     }
@@ -92,6 +94,9 @@ public class Page {
     }
     public Passwordconfirm passwordconfirm(){
         return new Passwordconfirm(driver,By.id("passwordConfirm"));
+    }
+    public Currency currency(){
+        return new Currency(driver, By.xpath("//*[@id='registrationForm']/div[15]/select"));
     }
     public Yearsconfirm yearsconfirm(){
         return new Yearsconfirm(driver,By.xpath("//*[@id='registrationForm']/div[19]"));

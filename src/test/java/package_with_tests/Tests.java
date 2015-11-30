@@ -24,6 +24,7 @@ public class Tests {
         eg.dateOfBirth.setValue("20", "06", "1990");
         eg.title.setValue("Mr");
         eg.email.setValue("HJGFjgj3*");
+        eg.country.setValue("GB");
         eg.city.setValue("HJGFjgj3*");
         eg.address.setValue("HJGFjgj3*");
         eg.zip.setValue("1234567890123");
@@ -31,11 +32,11 @@ public class Tests {
         eg.username.setValue("HJGFjgj3*");
         eg.password.setValue("HJGFjgj3*");
         eg.passwordconfirm.setValue("HJGFjgj3*");
-        eg.country.setValue("GB");
-        //eg.depositlimit.setValue("0");
+        eg.currency.setValue("EUR");
+        eg.depositlimit.setValue("0");
         eg.bonuscode.setValue("773551");
         eg.yearsconfirm.click();
-        //eg.submitRegistration();
+        eg.submitRegistration();
 
         //Assert.assertEquals(eg.firstname.errorMsgInvalid, eg.firstname.getErrorMessage());
 
