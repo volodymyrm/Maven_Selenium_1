@@ -10,7 +10,7 @@ public class Tests {
     Page eg;
     @Before
     public void setUp() {
-        eg = new Page("http://m-stg-admin.williamhillcasino.com/register2");
+        eg = new Page(Link.lnk);
     }
 
     @After
@@ -23,10 +23,10 @@ public class Tests {
         eg.firstname.setValue("HJGFjgj3*");
         eg.lastname.setValue("HJGFjgj3*");
         eg.dateOfBirth.setValue("20", "06", "1990");
-        //eg.setTitle("Mr");
+        eg.title.setValue("Mr");
         eg.email.setValue("HJGFjgj3*");
-
-        //eg.setCountry("GB");
+        eg.country.setValue("GB");
+        eg.city.setValue("HJGFjgj3*");
         //eg.typeCity("HJGFjgj3*");
         //eg.typeAddress("HJGFjgj3*");
         //eg.typeZip("1234567890123");
@@ -37,9 +37,10 @@ public class Tests {
         //eg.setDepositLimit("0");
         //eg.submitYearsConfirm();
         //eg.submitEmailSubscription();
-        //eg.submitRegistration();
+        eg.submitRegistration();
 
         Assert.assertEquals(eg.firstname.errorMsgInvalid, eg.firstname.getErrorMessage());
+        System.out.println(eg.city.getErrorMessage());
 
         try {
             Thread.sleep(5000);
