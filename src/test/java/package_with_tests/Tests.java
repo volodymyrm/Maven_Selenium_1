@@ -32,10 +32,10 @@ public class Tests {
         eg.password.setValue("HJGFjgj3*");
         eg.passwordconfirm.setValue("HJGFjgj3*");
         eg.country.setValue("GB");
-        eg.depositlimit.setValue("0");
+        //eg.depositlimit.setValue("0");
         eg.bonuscode.setValue("773551");
         eg.yearsconfirm.click();
-        eg.submitRegistration();
+        //eg.submitRegistration();
 
         //Assert.assertEquals(eg.firstname.errorMsgInvalid, eg.firstname.getErrorMessage());
 
