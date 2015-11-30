@@ -8,15 +8,15 @@ import org.openqa.selenium.support.ui.Select;
 public class Country {
 
     WebDriver driver;
-    WebElement country;
+    WebElement element;
 
-    public Country(WebDriver driver, By countryField) {
+    public Country(WebDriver driver, By field) {
         this.driver = driver;
-        country = driver.findElement(countryField);
+        element = driver.findElement(field);
     }
 
-    public void setValue(String countryvalue){
-        Select selectTitle = new Select(country);
-        selectTitle.selectByValue(countryvalue);
+    public void setValue(String value){
+        Select selectTitle = new Select(element);
+        selectTitle.selectByValue(value);
     }
 }

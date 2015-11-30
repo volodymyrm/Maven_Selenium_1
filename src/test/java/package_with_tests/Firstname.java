@@ -7,19 +7,19 @@ import org.openqa.selenium.WebElement;
 public class Firstname {
 
     WebDriver driver;
-    WebElement firstname;
+    WebElement element;
 
     String errorMsgEmpty = "This field is mandatory";
     String errorMsgLong = "First name should have 1-50 characters";
     String errorMsgInvalid = "Please only use letters (a-z) and characters (,-.)";
 
-    public Firstname(WebDriver driver, By firstnameField) {
+    public Firstname(WebDriver driver, By field) {
         this.driver = driver;
-        firstname = driver.findElement(firstnameField);
+        element = driver.findElement(field);
     }
 
-    public void setValue(String firstnameValue){
-        firstname.sendKeys(firstnameValue);
+    public void setValue(String value){
+        element.sendKeys(value);
     }
 
     public String getErrorMessage(){

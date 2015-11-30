@@ -4,24 +4,24 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class City {
+public class Yearsconfirm {
 
     WebDriver driver;
     WebElement element;
 
-    public City(WebDriver driver, By field){
+    public Yearsconfirm(WebDriver driver, By field){
 
         this.driver = driver;
         element = driver.findElement(field);
     }
 
-    public void setValue(String value){
+    public void click(){
 
-        element.sendKeys(value);
+        element.click();
     }
 
     public String getErrorMessage(){
 
-        return driver.findElement(By.xpath("//*[@id='registrationForm']/div[8]/div[3]")).getText();
+        return driver.findElement(By.xpath("//*[@id='registrationForm']/div[19]/div[3]")).getText();
     }
 }

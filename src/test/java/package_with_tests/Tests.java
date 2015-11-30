@@ -1,7 +1,6 @@
 package package_with_tests;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,22 +24,20 @@ public class Tests {
         eg.dateOfBirth.setValue("20", "06", "1990");
         eg.title.setValue("Mr");
         eg.email.setValue("HJGFjgj3*");
-        eg.country.setValue("GB");
         eg.city.setValue("HJGFjgj3*");
-        //eg.typeCity("HJGFjgj3*");
-        //eg.typeAddress("HJGFjgj3*");
-        //eg.typeZip("1234567890123");
-        //eg.typeCellphone("HJGFjgj3*");
-        //eg.typeUname("HJGFjgj3*");
-        //eg.typePassword("HJGFjgj3*");
-        //eg.typeConfirmPass("HJGFjgj3*");
-        //eg.setDepositLimit("0");
-        //eg.submitYearsConfirm();
-        //eg.submitEmailSubscription();
+        eg.address.setValue("HJGFjgj3*");
+        eg.zip.setValue("1234567890123");
+        eg.cellphone.setValue("1111111");
+        eg.username.setValue("HJGFjgj3*");
+        eg.password.setValue("HJGFjgj3*");
+        eg.passwordconfirm.setValue("HJGFjgj3*");
+        eg.country.setValue("GB");
+        eg.depositlimit.setValue("0");
+        eg.bonuscode.setValue("773551");
+        eg.yearsconfirm.click();
         eg.submitRegistration();
 
-        Assert.assertEquals(eg.firstname.errorMsgInvalid, eg.firstname.getErrorMessage());
-        System.out.println(eg.city.getErrorMessage());
+        //Assert.assertEquals(eg.firstname.errorMsgInvalid, eg.firstname.getErrorMessage());
 
         try {
             Thread.sleep(5000);

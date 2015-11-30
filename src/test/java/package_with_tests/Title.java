@@ -8,15 +8,15 @@ import org.openqa.selenium.support.ui.Select;
 public class Title {
 
     WebDriver driver;
-    WebElement title;
+    WebElement element;
 
-    public Title(WebDriver driver, By titleField) {
+    public Title(WebDriver driver, By field) {
         this.driver = driver;
-        title = driver.findElement(titleField);
+        element = driver.findElement(field);
     }
 
-    public void setValue(String titlevalue){
-        Select selectTitle = new Select(title);
-        selectTitle.selectByValue(titlevalue);
+    public void setValue(String value){
+        Select selectTitle = new Select(element);
+        selectTitle.selectByValue(value);
     }
 }
