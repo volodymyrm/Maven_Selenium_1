@@ -8,8 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3-sources.jar!/" />
-      <root url="file://$USER_HOME$/Downloads/selenium-2.48.2" />
+      <root url="jar://C:/selenium-2.48.2/selenium-java-2.48.2-srcs.jar!/" />
     </SOURCES>
-    <jarDirectory url="file://$USER_HOME$/Downloads/selenium-2.48.2" recursive="false" type="SOURCES" />
   </library>
 </component>

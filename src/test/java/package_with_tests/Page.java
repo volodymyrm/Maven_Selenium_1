@@ -2,7 +2,10 @@ package package_with_tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Page {
 
@@ -33,7 +36,7 @@ public class Page {
         System.setProperty("webdriver.chrome.driver", "\\Chromedriver\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get(link);
-        //try {Thread.sleep(4000);} catch (InterruptedException e) {e.printStackTrace();}
+        WebElement dynamicElement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*/iframe")));
         driver.switchTo().frame(0);
 
         firstname = firstname();
