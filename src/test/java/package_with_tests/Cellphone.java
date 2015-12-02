@@ -9,6 +9,9 @@ public class Cellphone {
     WebDriver driver;
     WebElement element;
 
+    String errorMsgEmpty = "This field is mandatory";
+    String errorMsgInvalid = "Please enter your mobile phone number (10-20 digits)";
+
     public Cellphone(WebDriver driver, By field){
 
         this.driver = driver;

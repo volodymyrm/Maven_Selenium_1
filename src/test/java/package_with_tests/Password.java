@@ -9,6 +9,9 @@ public class Password {
     WebDriver driver;
     WebElement element;
 
+    String errorMsgEmpty = "This field is mandatory";
+    String errorMsgInvalid = "Please choose a password 5-10 characters long, using letters (a-z) and numbers (0-9) only";
+
     public Password(WebDriver driver, By field){
 
         this.driver = driver;

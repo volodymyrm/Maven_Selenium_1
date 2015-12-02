@@ -9,6 +9,10 @@ public class City {
     WebDriver driver;
     WebElement element;
 
+    String errorMsgEmpty = "This field is mandatory";
+    String errorMsgInvalid ="Please enter your city using letters (a-z), numbers (0-9) and characters (.-')";
+    String errorMsgLong = "Please enter your city using letters (a-z), numbers (0-9) and characters (.-')"; //Wrong validation message
+
     public City(WebDriver driver, By field){
 
         this.driver = driver;

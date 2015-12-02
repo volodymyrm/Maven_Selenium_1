@@ -12,6 +12,8 @@ public class Dob {
     WebElement month;
     WebElement year;
 
+    String errorMsgEmpty = "This field is mandatory";
+
     public Dob(WebDriver driver, By dayField, By monthField,By yearField) {
         this.driver = driver;
         day = driver.findElement(dayField);
@@ -27,5 +29,9 @@ public class Dob {
         selectDay.selectByValue(dayvalue);
         selectMonth.selectByValue(monthvalue);
         selectYear.selectByValue(yearvalue);
+    }
+
+    public String getErrorMessage(){
+        return driver.findElement(By.xpath("//*[@id='registrationForm']/div[4]/div[4]")).getText();
     }
 }

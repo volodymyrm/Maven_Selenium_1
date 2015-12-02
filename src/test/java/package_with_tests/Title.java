@@ -10,6 +10,8 @@ public class Title {
     WebDriver driver;
     WebElement element;
 
+    String errorMsgEmpty = "This field is mandatory";
+
     public Title(WebDriver driver, By field) {
         this.driver = driver;
         element = driver.findElement(field);
@@ -18,5 +20,9 @@ public class Title {
     public void setValue(String value){
         Select selectTitle = new Select(element);
         selectTitle.selectByValue(value);
+    }
+
+    public String getErrorMessage(){
+        return driver.findElement(By.xpath("//*[@id='registrationForm']/div[5]/div[3]")).getText();
     }
 }

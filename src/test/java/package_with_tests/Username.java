@@ -9,6 +9,9 @@ public class Username {
     WebDriver driver;
     WebElement element;
 
+    String errorMsgEmpty = "This field is mandatory";
+    String errorMsgInvalid = "Please select a username using letters, numbers and characters (.-_@). 5-16 characters long";
+
     public Username(WebDriver driver, By field){
 
         this.driver = driver;

@@ -10,8 +10,9 @@ public class Lastname {
     WebElement lastname;
 
     String errorMsgEmpty = "This field is mandatory";
-    String errorMsgLong = "First name should have 1-50 characters";
     String errorMsgInvalid = "Please only use letters (a-z) and characters (,-.)";
+    String errorMsgLong = "First name should have 1-50 characters";
+
 
     public Lastname(WebDriver driver, By lastnameField) {
         this.driver = driver;

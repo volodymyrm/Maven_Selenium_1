@@ -9,6 +9,9 @@ public class Zip {
     WebDriver driver;
     WebElement element;
 
+    String errorMsgEmpty = "This field is mandatory";
+    String errorMsgInvalid = "Please enter your postal code using letters (a-z), numbers (0-9) and characters (_-/)";
+
     public Zip(WebDriver driver, By field){
 
         this.driver = driver;
