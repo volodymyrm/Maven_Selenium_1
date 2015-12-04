@@ -41,6 +41,7 @@ public class Tests {
         eg.yearsconfirm.click();
         eg.submitRegistration();
 
+        // expect, actual
         Assert.assertEquals(eg.firstname.errorMsgInvalid, eg.firstname.getErrorMessage());
         Assert.assertEquals(eg.lastname.errorMsgInvalid, eg.lastname.getErrorMessage());
         Assert.assertEquals(eg.email.errorMsgInvalid, eg.email.getErrorMessage());
@@ -57,20 +58,36 @@ public class Tests {
     public void testEmptyData(){
         eg.submitRegistration();
 
-        Assert.assertEquals(eg.firstname.getErrorMessage(), eg.firstname.errorMsgEmpty);
+        // expect, actual
+        Assert.assertEquals(eg.firstname.errorMsgEmpty, eg.firstname.getErrorMessage());
+        Assert.assertEquals(eg.lastname.errorMsgEmpty, eg.lastname.getErrorMessage());
+        Assert.assertEquals(eg.dateOfBirth.errorMsgEmpty, eg.dateOfBirth.getErrorMessage());
+        Assert.assertEquals(eg.title.errorMsgEmpty, eg.title.getErrorMessage());
+        Assert.assertEquals(eg.email.errorMsgEmpty, eg.email.getErrorMessage());
+        Assert.assertEquals(eg.country.errorMsgEmpty, eg.country.getErrorMessage());
+        Assert.assertEquals(eg.city.errorMsgEmpty, eg.city.getErrorMessage());
+        Assert.assertEquals(eg.address.errorMsgEmpty, eg.address.getErrorMessage());
+        Assert.assertEquals(eg.zip.errorMsgEmpty, eg.zip.getErrorMessage());
+        Assert.assertEquals(eg.cellphone.errorMsgEmpty, eg.cellphone.getErrorMessage());
+        Assert.assertEquals(eg.username.errorMsgEmpty, eg.username.getErrorMessage());
+        Assert.assertEquals(eg.password.errorMsgEmpty, eg.password.getErrorMessage());
+        Assert.assertEquals(eg.passwordconfirm.errorMsgPassMissmatch, eg.passwordconfirm.getErrorMessage());
+        Assert.assertEquals(eg.depositlimit.errorMsgEmpty, eg.depositlimit.getErrorMessage());
+        Assert.assertEquals(eg.yearsconfirm.errorMsgEmpty, eg.yearsconfirm.getErrorMessage());
+        try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
 
     }
     @Test
     public void testValidData(){
         eg.firstname.setValue(Randomvalue.alphabetValue(6));
         eg.lastname.setValue(Randomvalue.alphabetValue(6));
-        eg.dateOfBirth.setValue2(Randomvalue.validDate());
-        //eg.title.setValue("Mr");
+        eg.dateOfBirth.setValue(Randomvalue.validDate());
+        eg.title.setValue("Mr");
         eg.email.setValue(Randomvalue.invalidValue(6));
-        //eg.country.setValue("GB");
+        eg.country.setValue(Randomvalue.validCountry());
         eg.city.setValue(Randomvalue.invalidValue(6));
         eg.address.setValue(Randomvalue.invalidValue(6));
-        //eg.zip.setValue(Randomvalue.numberValue(13));
+        eg.zip.setValue(Randomvalue.numberValue(13));
         eg.cellphone.setValue(Randomvalue.numberValue(7));
         eg.username.setValue(Randomvalue.invalidValue(6));
 
@@ -78,7 +95,7 @@ public class Tests {
         eg.password.setValue(passwordValue);
         eg.passwordconfirm.setValue(passwordValue);
         //eg.currency.setValue("EUR");
-        //eg.depositlimit.setValue("0");
+        eg.depositlimit.setValue("0");
         eg.bonuscode.setValue(Randomvalue.numberValue(7));
         eg.yearsconfirm.click();
         eg.submitRegistration();

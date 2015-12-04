@@ -11,7 +11,7 @@ public class Passwordconfirm {
 
     String errorMsgEmpty = "This field is mandatory";
     String errorMsgInvalid = "Please choose a password 5-10 characters long, using letters (a-z) and numbers (0-9) only";
-    String errorMsgPassMissmatch = "This field is mandatory";
+    String errorMsgPassMissmatch = "The passwords you typed do not match";
 
     public Passwordconfirm(WebDriver driver, By field){
 

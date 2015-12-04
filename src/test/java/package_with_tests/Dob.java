@@ -22,20 +22,7 @@ public class Dob {
         year = driver.findElement(yearField);
     }
 
-    public void setValue(String dayvalue, String monthvalue, String yearvalue){
-
-
-        Select selectDay = new Select(day);
-        Select selectMonth = new Select(month);
-        Select selectYear = new Select(year);
-
-        selectDay.selectByValue(dayvalue);
-        selectMonth.selectByValue(monthvalue);
-        selectYear.selectByValue(yearvalue);
-
-    }
-
-    public void setValue2(Triple<String,String,String> triple){
+    public void setValue(Triple<String,String,String> triple){
 
         Select selectDay = new Select(day);
         Select selectMonth = new Select(month);

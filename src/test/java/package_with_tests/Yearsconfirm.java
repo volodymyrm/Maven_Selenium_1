@@ -8,7 +8,7 @@ public class Yearsconfirm {
 
     WebDriver driver;
     WebElement element;
-
+    String errorMsgEmpty = "You must agree to our Terms and Conditions and Privacy policy in order to register an account";
     public Yearsconfirm(WebDriver driver, By field){
 
         this.driver = driver;
