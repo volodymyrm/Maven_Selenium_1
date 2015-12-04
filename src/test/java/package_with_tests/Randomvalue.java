@@ -46,8 +46,8 @@ public class Randomvalue {
         m = month[rn.nextInt(11)];
         String y = dob.getRight();
         x = (1940 + rn.nextInt(58));
-        year = x.toString();
-        y = year;
+        y = x.toString();
+
         dob = Triple.of(d,m,y);
 
         return dob;
