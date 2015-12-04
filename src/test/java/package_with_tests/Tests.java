@@ -51,11 +51,7 @@ public class Tests {
         Assert.assertEquals(eg.password.errorMsgInvalid, eg.password.getErrorMessage());
         Assert.assertEquals(eg.passwordconfirm.errorMsgInvalid, eg.passwordconfirm.getErrorMessage());
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
     }
     @Test
     public void testEmptyData(){
@@ -63,6 +59,30 @@ public class Tests {
 
         Assert.assertEquals(eg.firstname.getErrorMessage(), eg.firstname.errorMsgEmpty);
 
+    }
+    @Test
+    public void testValidData(){
+        eg.firstname.setValue(Randomvalue.alphabetValue(6));
+        eg.lastname.setValue(Randomvalue.alphabetValue(6));
+        eg.dateOfBirth.setValue2(Randomvalue.validDate());
+        //eg.title.setValue("Mr");
+        eg.email.setValue(Randomvalue.invalidValue(6));
+        //eg.country.setValue("GB");
+        eg.city.setValue(Randomvalue.invalidValue(6));
+        eg.address.setValue(Randomvalue.invalidValue(6));
+        //eg.zip.setValue(Randomvalue.numberValue(13));
+        eg.cellphone.setValue(Randomvalue.numberValue(7));
+        eg.username.setValue(Randomvalue.invalidValue(6));
+
+        String passwordValue = Randomvalue.invalidValue(6);
+        eg.password.setValue(passwordValue);
+        eg.passwordconfirm.setValue(passwordValue);
+        //eg.currency.setValue("EUR");
+        //eg.depositlimit.setValue("0");
+        eg.bonuscode.setValue(Randomvalue.numberValue(7));
+        eg.yearsconfirm.click();
+        eg.submitRegistration();
+        try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
     }
 
 }
