@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Page {
 
     WebDriver driver;
-
     Firstname firstname;
     Lastname lastname;
     Email email;
@@ -26,6 +25,7 @@ public class Page {
     Passwordconfirm passwordconfirm;
     Currency currency;
     Depositlimit depositlimit;
+    Depositamount depositamount;
     Bonuscode bonuscode;
     Yearsconfirm yearsconfirm;
 
@@ -55,6 +55,7 @@ public class Page {
         yearsconfirm = yearsconfirm();
         currency = currency();
         depositlimit = depositlimit();
+        depositamount = depositamount();
         bonuscode = bonuscode();
     }
 
@@ -107,19 +108,19 @@ public class Page {
     public Depositlimit depositlimit(){
         return new Depositlimit(driver, By.xpath("//*[@id='registrationForm']/div[16]/select"));
     }
+    public Depositamount depositamount(){
+        return new Depositamount(driver,By.xpath("//*[@id='registrationForm']/div[17]/select"));
+    }
     public Bonuscode bonuscode(){
         return new Bonuscode(driver, By.id("coupon"));
     }
-
     public void close(){
         driver.quit();
     }
-
     public Page submitEmailSubscription(){
         driver.findElement(emailSubscription).click();
         return this;
     }
-
     public Page submitRegistration() {
         driver.findElement(regButton).click();
         return this;

@@ -25,7 +25,7 @@ public class Tests {
         eg.email.setValue(Randomvalue.invalidValue(6));
         eg.city.setValue(Randomvalue.invalidValue(6));
         eg.address.setValue(Randomvalue.invalidValue(6));
-        eg.zip.setValue(Randomvalue.numberValue(13)+"+");
+        eg.zip.setValue(Randomvalue.numberValue(11)+"+");
         eg.cellphone.setValue(Randomvalue.numberValue(7));
         eg.username.setValue(Randomvalue.invalidValue(6));
 
@@ -34,7 +34,7 @@ public class Tests {
         eg.passwordconfirm.setValue(passwordValue);
         eg.bonuscode.setValue(Randomvalue.invalidValue(7));
         eg.submitRegistration();
-        try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
+
         // expect, actual
         Assert.assertEquals(eg.firstname.errorMsgInvalid, eg.firstname.getErrorMessage());
         Assert.assertEquals(eg.lastname.errorMsgInvalid, eg.lastname.getErrorMessage());
@@ -47,8 +47,7 @@ public class Tests {
         Assert.assertEquals(eg.password.errorMsgInvalid, eg.password.getErrorMessage());
         Assert.assertEquals(eg.passwordconfirm.errorMsgInvalid, eg.passwordconfirm.getErrorMessage());
         Assert.assertEquals(eg.bonuscode.errorMsgInvalid, eg.bonuscode.getErrorMessage());
-
-        try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
+        //try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
     }
     @Test
     public void testEmptyData(){
@@ -70,7 +69,7 @@ public class Tests {
         Assert.assertEquals(eg.passwordconfirm.errorMsgPassMissmatch, eg.passwordconfirm.getErrorMessage());
         Assert.assertEquals(eg.depositlimit.errorMsgEmpty, eg.depositlimit.getErrorMessage());
         Assert.assertEquals(eg.yearsconfirm.errorMsgEmpty, eg.yearsconfirm.getErrorMessage());
-        try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
+       //try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
 
     }
     @Test
@@ -79,23 +78,33 @@ public class Tests {
         eg.lastname.setValue(Randomvalue.alphabetValue(6));
         eg.dateOfBirth.setValue(Randomvalue.dob());
         eg.title.setValue(Randomvalue.title());
-        eg.email.setValue(Randomvalue.invalidValue(6));
+        eg.email.setValue(Randomvalue.email());
         eg.country.setValue(Randomvalue.country());
-        eg.city.setValue(Randomvalue.invalidValue(6));
-        eg.address.setValue(Randomvalue.invalidValue(6));
-        eg.zip.setValue(Randomvalue.numberValue(13));
+        eg.city.setValue(Randomvalue.alphabetValue(6));
+        eg.address.setValue(Randomvalue.alphabetValue(6));
+        eg.zip.setValue(Randomvalue.numberValue(12));
         eg.cellphone.setValue(Randomvalue.numberValue(7));
-        eg.username.setValue(Randomvalue.invalidValue(6));
+        eg.username.setValue(Randomvalue.alphabetValue(6));
 
-        String passwordValue = Randomvalue.invalidValue(6);
+        String passwordValue = Randomvalue.numberValue(6);
         eg.password.setValue(passwordValue);
         eg.passwordconfirm.setValue(passwordValue);
-        //eg.currency.setValue("EUR");
-        eg.depositlimit.setValue("0");
+        eg.currency.setValue(Randomvalue.currency());
+        String depositlimit = Randomvalue.deposit();
+        eg.depositlimit.setValue(depositlimit);
+        if (depositlimit != "0"){
+            eg.depositamount.setValue(Randomvalue.deositamount());
+        }
         eg.bonuscode.setValue(Randomvalue.numberValue(7));
         eg.yearsconfirm.click();
         eg.submitRegistration();
         try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
+
     }
 
+    @Test
+    public void testDeposit(){
+        eg.depositlimit.setValue(Randomvalue.deposit());
+        try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
+    }
 }

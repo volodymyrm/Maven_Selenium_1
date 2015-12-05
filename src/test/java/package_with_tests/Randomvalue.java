@@ -26,6 +26,7 @@ public class Randomvalue {
             return RandomStringUtils.random(length-1, alphabetChars)+ RandomStringUtils.random(1, invalidChars);
         }
     }
+
     public static String email(){
         return RandomStringUtils.random(5,alphabetChars)+"@"+RandomStringUtils.random(5,alphabetChars)+"."+"com";
     }
@@ -60,4 +61,15 @@ public class Randomvalue {
         return title[rn.nextInt(3)];
     }
 
+    public static String currency(){
+        String[] currency = {"GBP","EUR","USD","CAD","DKK","SEK","CHF"};
+        Random rn = new Random();
+        return currency[rn.nextInt(6)];
+    }
+
+    public static String deositamount(){
+        String[] amount = {"0","20","50","100","500","1000","5000","10000","50000","99000"};
+        Random rn = new Random();
+        return amount[rn.nextInt(9)];
+    }
 }
