@@ -33,7 +33,7 @@ public class Page {
     By regButton = By.className("button");
 
     public Page(String link) {
-        System.setProperty("webdriver.chrome.driver", "\\Chromedriver\\chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "\\Chromedriver\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get(link);
         WebElement dynamicElement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*/iframe")));
