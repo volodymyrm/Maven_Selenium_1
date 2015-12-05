@@ -102,9 +102,4 @@ public class Tests {
 
     }
 
-    @Test
-    public void testDeposit(){
-        eg.depositlimit.setValue(Randomvalue.deposit());
-        try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
-    }
 }
