@@ -9,6 +9,8 @@ public class Bonuscode {
     WebDriver driver;
     WebElement element;
 
+    String errorMsgInvalid = "The coupon you have chosen is invalid";
+
     public Bonuscode(WebDriver driver, By field){
 
         this.driver = driver;
