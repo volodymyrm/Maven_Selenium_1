@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -34,7 +35,9 @@ public class Page {
 
     public Page(String link) {
         System.setProperty("webdriver.chrome.driver", "\\Chromedriver\\chromedriver.exe");
-        driver = new ChromeDriver();
+        ChromeOptions option = new ChromeOptions();
+        option.addArguments("--window-size=420,1000");
+        driver = new ChromeDriver(option);
         driver.get(link);
         WebElement dynamicElement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*/iframe")));
         driver.switchTo().frame(0);

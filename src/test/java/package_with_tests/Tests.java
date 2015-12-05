@@ -70,7 +70,6 @@ public class Tests {
         Assert.assertEquals(eg.depositlimit.errorMsgEmpty, eg.depositlimit.getErrorMessage());
         Assert.assertEquals(eg.yearsconfirm.errorMsgEmpty, eg.yearsconfirm.getErrorMessage());
        //try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
-
     }
     @Test
     public void testValidData(){
@@ -98,8 +97,7 @@ public class Tests {
         eg.bonuscode.setValue(Randomvalue.numberValue(7));
         eg.yearsconfirm.click();
         eg.submitRegistration();
-        try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
-
+        //try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
     }
 
 }
