@@ -128,5 +128,4 @@ public class Page {
         driver.findElement(regButton).click();
         return this;
     }
-
 }

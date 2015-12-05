@@ -49,6 +49,7 @@ public class Tests {
         Assert.assertEquals(eg.bonuscode.errorMsgInvalid, eg.bonuscode.getErrorMessage());
         //try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
     }
+
     @Test
     public void testEmptyData(){
         eg.submitRegistration();
