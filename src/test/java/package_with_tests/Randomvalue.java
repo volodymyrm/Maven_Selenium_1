@@ -8,7 +8,7 @@ public class Randomvalue {
 
     public static String alphabetChars = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
     public static String numberChars = "0123456789";
-    public static String invalidChars = "*&?`^%+";
+    public static String invalidChars = "*%+";
 
     public static String numberValue (int length){
         return RandomStringUtils.random(length, numberChars);

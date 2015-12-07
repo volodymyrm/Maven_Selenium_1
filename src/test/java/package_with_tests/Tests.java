@@ -24,17 +24,16 @@ public class Tests {
         eg.lastname.setValue(Randomvalue.invalidValue(6));
         eg.email.setValue(Randomvalue.invalidValue(6));
         eg.city.setValue(Randomvalue.invalidValue(6));
-        eg.address.setValue(Randomvalue.invalidValue(6));
+        eg.address.setValue(Randomvalue.invalidValue(20));
         eg.zip.setValue(Randomvalue.numberValue(11)+"+");
         eg.cellphone.setValue(Randomvalue.numberValue(7));
         eg.username.setValue(Randomvalue.invalidValue(6));
-
         String passwordValue = Randomvalue.invalidValue(6);
         eg.password.setValue(passwordValue);
         eg.passwordconfirm.setValue(passwordValue);
+        try { Thread.sleep(2000); } catch (InterruptedException e) { e.printStackTrace(); }
         eg.bonuscode.setValue(Randomvalue.invalidValue(7));
         eg.submitRegistration();
-
         // expect, actual
         Assert.assertEquals(eg.firstname.errorMsgInvalid, eg.firstname.getErrorMessage());
         Assert.assertEquals(eg.lastname.errorMsgInvalid, eg.lastname.getErrorMessage());
