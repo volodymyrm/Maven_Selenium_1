@@ -6,16 +6,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class Tests {
+    String language;
 
     Page eg;
     @Before
     public void setUp() {
-        eg = new Page(Link.lnk);
+        //eg = new Page(Link.lnk);
+        language = "English";
     }
 
     @After
     public void thearDown(){
-        eg.close();
+        //eg.close();
+        int b=0;
     }
 
     @Test
@@ -100,4 +103,8 @@ public class Tests {
         //try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
     }
 
+     @Test
+    public void testParser(){
+        System.out.println(Parser.parseErrorMsg(Page.translationPage, language, "Firstname","On empty field"));
+    }
 }

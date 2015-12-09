@@ -11,7 +11,7 @@ public class Lastname {
 
     String errorMsgEmpty = "This field is mandatory";
     String errorMsgInvalid = "Please only use letters (a-z) and characters (,-.)";
-    String errorMsgLong = "First name should have 1-50 characters";
+    String errorMsgLong = "Last name should have 1-50 characters";
 
 
     public Lastname(WebDriver driver, By lastnameField) {

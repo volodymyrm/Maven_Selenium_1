@@ -29,7 +29,7 @@ public class Page {
     Depositamount depositamount;
     Bonuscode bonuscode;
     Yearsconfirm yearsconfirm;
-
+    public static String translationPage = "C:\\Chromedriver\\TranslationMatrix.xls";
     By emailSubscription = By.xpath("//*[@id='registrationForm']/div[20]");
     By regButton = By.className("button");
 
