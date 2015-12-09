@@ -17,7 +17,6 @@ import java.util.Iterator;
 public class Parser {
 
     public static String parse(String name) {
-
         String result = "";
         InputStream in = null;
         HSSFWorkbook wb = null;
@@ -58,8 +57,9 @@ public class Parser {
         return result;
     }
 
-    public static String parseErrorMsg(String filename, String lang, String element, String errortype) {
-
+    public static String parseErrorMsg(String element, String errortype) {
+        String filename = Page.translationPage;
+        String lang = Tests.language;
         HSSFWorkbook wb = null;
         try {
             POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(filename));
@@ -70,9 +70,9 @@ public class Parser {
 
         HSSFSheet sheet = wb.getSheetAt(0);
         String result="";
-        for (int i=0; i<7; i++){
+        for (int i=0; i<33; i++){
             HSSFRow row = sheet.getRow(i);
-            for (int j=0; j<5; j++){
+            for (int j=0; j<3; j++){
                 HSSFCell cell = row.getCell(j);
                 if (row.getCell(j) != null &&
                         row.getCell(0).getRichStringCellValue().getString().equals(element) &&

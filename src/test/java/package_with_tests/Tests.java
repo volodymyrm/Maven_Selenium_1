@@ -6,19 +6,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class Tests {
-    String language;
-
+    public static String language;
     Page eg;
     @Before
     public void setUp() {
-        //eg = new Page(Link.lnk);
+        eg = new Page(Link.lnk);
         language = "English";
     }
 
     @After
     public void thearDown(){
-        //eg.close();
-        int b=0;
+        eg.close();
     }
 
     @Test
@@ -57,21 +55,21 @@ public class Tests {
         eg.submitRegistration();
 
         // expect, actual
-        Assert.assertEquals(eg.firstname.errorMsgEmpty, eg.firstname.getErrorMessage());
-        Assert.assertEquals(eg.lastname.errorMsgEmpty, eg.lastname.getErrorMessage());
-        Assert.assertEquals(eg.dateOfBirth.errorMsgEmpty, eg.dateOfBirth.getErrorMessage());
-        Assert.assertEquals(eg.title.errorMsgEmpty, eg.title.getErrorMessage());
-        Assert.assertEquals(eg.email.errorMsgEmpty, eg.email.getErrorMessage());
-        Assert.assertEquals(eg.country.errorMsgEmpty, eg.country.getErrorMessage());
-        Assert.assertEquals(eg.city.errorMsgEmpty, eg.city.getErrorMessage());
-        Assert.assertEquals(eg.address.errorMsgEmpty, eg.address.getErrorMessage());
-        Assert.assertEquals(eg.zip.errorMsgEmpty, eg.zip.getErrorMessage());
-        Assert.assertEquals(eg.cellphone.errorMsgEmpty, eg.cellphone.getErrorMessage());
-        Assert.assertEquals(eg.username.errorMsgEmpty, eg.username.getErrorMessage());
-        Assert.assertEquals(eg.password.errorMsgEmpty, eg.password.getErrorMessage());
-        Assert.assertEquals(eg.passwordconfirm.errorMsgPassMissmatch, eg.passwordconfirm.getErrorMessage());
-        Assert.assertEquals(eg.depositlimit.errorMsgEmpty, eg.depositlimit.getErrorMessage());
-        Assert.assertEquals(eg.yearsconfirm.errorMsgEmpty, eg.yearsconfirm.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Firstname","Empty"), eg.firstname.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Lastname","Empty"), eg.lastname.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Dob","Empty"), eg.dateOfBirth.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Title","Empty"), eg.title.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Email","Empty"), eg.email.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Country","Empty"), eg.country.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("City","Empty"), eg.city.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Address","Empty"), eg.address.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Zip","Empty"), eg.zip.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Cellphone","Empty"), eg.cellphone.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Username","Empty"), eg.username.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Password","Empty"), eg.password.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Passwordconfirm","Missmatch"), eg.passwordconfirm.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Depositlimit","Empty"), eg.depositlimit.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Yearsconfirm","Empty"), eg.yearsconfirm.getErrorMessage());
        //try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
     }
     @Test
@@ -103,8 +101,8 @@ public class Tests {
         //try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
     }
 
-     @Test
+    @Test
     public void testParser(){
-        System.out.println(Parser.parseErrorMsg(Page.translationPage, language, "Firstname","On empty field"));
+        System.out.println(Parser.parseErrorMsg("Firstname","Empty"));
     }
 }
