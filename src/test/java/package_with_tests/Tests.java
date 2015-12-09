@@ -35,7 +35,6 @@ public class Tests {
         try { Thread.sleep(2000); } catch (InterruptedException e) { e.printStackTrace(); }
         eg.bonuscode.setValue(Randomvalue.invalidValue(7));
         eg.submitRegistration();
-
         // expect, actual
         Assert.assertEquals(eg.firstname.errorMsgInvalid, eg.firstname.getErrorMessage());
         Assert.assertEquals(eg.lastname.errorMsgInvalid, eg.lastname.getErrorMessage());
@@ -54,7 +53,6 @@ public class Tests {
     @Test
     public void testEmptyData(){
         eg.submitRegistration();
-
         // expect, actual
         Assert.assertEquals(Parser.parseErrorMsg("Firstname","Empty"), eg.firstname.getErrorMessage());
         Assert.assertEquals(Parser.parseErrorMsg("Lastname","Empty"), eg.lastname.getErrorMessage());
