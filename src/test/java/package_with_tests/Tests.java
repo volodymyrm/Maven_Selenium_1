@@ -10,13 +10,17 @@ public class Tests {
     Page eg;
     @Before
     public void setUp() {
+        // -----------------------------------INPUT HERE LINK OF THE PAGE THAT WILL BE TESTED
         eg = new Page(Link.lnk);
+
+        // -----------------------------------INPUT HERE LANGUAGE OF THE PAGE
         language = "English";
     }
 
     @After
     public void thearDown(){
         eg.close();
+        //int a=0;
     }
 
     @Test
@@ -71,6 +75,7 @@ public class Tests {
         Assert.assertEquals(Parser.parseErrorMsg("Yearsconfirm","Empty"), eg.yearsconfirm.getErrorMessage());
        //try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
     }
+
     @Test
     public void testValidData(){
         eg.firstname.setValue(Randomvalue.alphabetValue(6));
@@ -100,8 +105,8 @@ public class Tests {
         //try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
     }
 
-    @Test
+    /*@Test
     public void testParser(){
-        System.out.println(Parser.parseErrorMsg("Firstname","Empty"));
-    }
+        System.out.println(Parser.parseErrorMsg("Dob","Empty"));
+    }*/
 }

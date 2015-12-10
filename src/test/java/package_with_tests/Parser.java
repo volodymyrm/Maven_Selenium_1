@@ -70,9 +70,28 @@ public class Parser {
 
         HSSFSheet sheet = wb.getSheetAt(0);
         String result="";
-        for (int i=0; i<33; i++){
+
+        int maxRow = 0;
+        int maxCell = 0;
+        Iterator<Row> it = sheet.iterator();
+
+        while (it.hasNext()) {
+            maxCell = 0;
+            Row row = it.next();
+            Iterator<Cell> cells = row.iterator();
+            maxRow ++;
+            while (cells.hasNext()) {
+                Cell cell = cells.next();
+                maxCell++;
+            }
+        }
+
+        //System.out.print("maxRow = "+ maxRow + "\n");
+        //System.out.print("maxCell = "+ maxCell + "\n");
+
+        for (int i=0; i<maxRow; i++){
             HSSFRow row = sheet.getRow(i);
-            for (int j=0; j<3; j++){
+            for (int j=0; j<maxCell; j++){
                 HSSFCell cell = row.getCell(j);
                 if (row.getCell(j) != null &&
                         row.getCell(0).getRichStringCellValue().getString().equals(element) &&
@@ -82,7 +101,6 @@ public class Parser {
                 }
             }
         }
-
         return result;
     }
 }
