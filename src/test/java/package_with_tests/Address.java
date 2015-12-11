@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 
 public class Address {
 
-    WebDriver driver;
-    WebElement element;
+    private WebDriver driver;
+    private WebElement element;
 
     String errorMsgEmpty = "This field is mandatory";
     String errorMsgInvalid ="Please use only letters (a-z), numbers (0-9) and characters (,-'/#&)";

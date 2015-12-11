@@ -6,9 +6,9 @@ import java.util.Random;
 
 public class Randomvalue {
 
-    public static String alphabetChars = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
-    public static String numberChars = "0123456789";
-    public static String invalidChars = "*%+";
+    private static String alphabetChars = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+    private static String numberChars = "0123456789";
+    private static String invalidChars = "*%+";
 
     public static String numberValue (int length){
         return RandomStringUtils.random(length, numberChars);

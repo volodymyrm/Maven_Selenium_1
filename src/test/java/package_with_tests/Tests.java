@@ -7,11 +7,11 @@ import org.junit.Test;
 
 public class Tests {
     public static String language;
-    Page eg;
+    Page wh;
     @Before
     public void setUp() {
         // -----------------------------------INPUT HERE LINK OF THE PAGE THAT WILL BE TESTED
-        eg = new Page(Link.lnk);
+        wh = new Page(Link.lnk);
 
         // -----------------------------------INPUT HERE LANGUAGE OF THE PAGE
         language = "English";
@@ -19,89 +19,101 @@ public class Tests {
 
     @After
     public void thearDown(){
-        eg.close();
+        wh.close();
         //int a=0;
     }
 
     @Test
     public void testInvalidData(){
-        eg.firstname.setValue(Randomvalue.invalidValue(6));
-        eg.lastname.setValue(Randomvalue.invalidValue(6));
-        eg.email.setValue(Randomvalue.invalidValue(6));
-        eg.city.setValue(Randomvalue.invalidValue(6));
-        eg.address.setValue(Randomvalue.invalidValue(20));
-        eg.zip.setValue(Randomvalue.numberValue(11)+"+");
-        eg.cellphone.setValue(Randomvalue.numberValue(7));
-        eg.username.setValue(Randomvalue.invalidValue(6));
+        wh.firstname.setValue(Randomvalue.invalidValue(6));
+        wh.lastname.setValue(Randomvalue.invalidValue(6));
+        wh.email.setValue(Randomvalue.invalidValue(6));
+        wh.city.setValue(Randomvalue.invalidValue(6));
+        wh.address.setValue(Randomvalue.invalidValue(20));
+        wh.zip.setValue(Randomvalue.numberValue(11)+"+");
+        wh.username.setValue(Randomvalue.invalidValue(6));
         String passwordValue = Randomvalue.invalidValue(6);
-        eg.password.setValue(passwordValue);
-        eg.passwordconfirm.setValue(passwordValue);
+        wh.password.setValue(passwordValue);
+        wh.passwordconfirm.setValue(passwordValue);
         try { Thread.sleep(2000); } catch (InterruptedException e) { e.printStackTrace(); }
-        eg.bonuscode.setValue(Randomvalue.invalidValue(7));
-        eg.submitRegistration();
+        wh.bonuscode.setValue(Randomvalue.invalidValue(7));
+        wh.submitRegistration();
         // expect, actual
-        Assert.assertEquals(eg.firstname.errorMsgInvalid, eg.firstname.getErrorMessage());
-        Assert.assertEquals(eg.lastname.errorMsgInvalid, eg.lastname.getErrorMessage());
-        Assert.assertEquals(eg.email.errorMsgInvalid, eg.email.getErrorMessage());
-        Assert.assertEquals(eg.city.errorMsgInvalid, eg.city.getErrorMessage());
-        Assert.assertEquals(eg.address.errorMsgInvalid, eg.address.getErrorMessage());
-        Assert.assertEquals(eg.zip.errorMsgInvalid, eg.zip.getErrorMessage());
-        Assert.assertEquals(eg.cellphone.errorMsgInvalid, eg.cellphone.getErrorMessage());
-        Assert.assertEquals(eg.username.errorMsgInvalid, eg.username.getErrorMessage());
-        Assert.assertEquals(eg.password.errorMsgInvalid, eg.password.getErrorMessage());
-        Assert.assertEquals(eg.passwordconfirm.errorMsgInvalid, eg.passwordconfirm.getErrorMessage());
-        Assert.assertEquals(eg.bonuscode.errorMsgInvalid, eg.bonuscode.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Firstname","InvalidData"), wh.firstname.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Lastname","InvalidData"), wh.lastname.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Email","InvalidData"), wh.email.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("City","InvalidData"), wh.city.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Address","InvalidData"), wh.address.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Zip","InvalidData"), wh.zip.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Username","InvalidData"), wh.username.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Password","InvalidData"), wh.password.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Passwordconfirm","InvalidData"), wh.passwordconfirm.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Bonuscode","InvalidData"), wh.bonuscode.getErrorMessage());
         //try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
     }
 
     @Test
-    public void testEmptyData(){
-        eg.submitRegistration();
+    public void testLongData(){
+        wh.firstname.setValue(Randomvalue.alphabetValue(51));
+        wh.lastname.setValue(Randomvalue.alphabetValue(51));
+        wh.cellphone.setValue(Randomvalue.numberValue(21));
+        wh.address.setValue(Randomvalue.alphabetValue(161));
+        wh.submitRegistration();
         // expect, actual
-        Assert.assertEquals(Parser.parseErrorMsg("Firstname","Empty"), eg.firstname.getErrorMessage());
-        Assert.assertEquals(Parser.parseErrorMsg("Lastname","Empty"), eg.lastname.getErrorMessage());
-        Assert.assertEquals(Parser.parseErrorMsg("Dob","Empty"), eg.dateOfBirth.getErrorMessage());
-        Assert.assertEquals(Parser.parseErrorMsg("Title","Empty"), eg.title.getErrorMessage());
-        Assert.assertEquals(Parser.parseErrorMsg("Email","Empty"), eg.email.getErrorMessage());
-        Assert.assertEquals(Parser.parseErrorMsg("Country","Empty"), eg.country.getErrorMessage());
-        Assert.assertEquals(Parser.parseErrorMsg("City","Empty"), eg.city.getErrorMessage());
-        Assert.assertEquals(Parser.parseErrorMsg("Address","Empty"), eg.address.getErrorMessage());
-        Assert.assertEquals(Parser.parseErrorMsg("Zip","Empty"), eg.zip.getErrorMessage());
-        Assert.assertEquals(Parser.parseErrorMsg("Cellphone","Empty"), eg.cellphone.getErrorMessage());
-        Assert.assertEquals(Parser.parseErrorMsg("Username","Empty"), eg.username.getErrorMessage());
-        Assert.assertEquals(Parser.parseErrorMsg("Password","Empty"), eg.password.getErrorMessage());
-        Assert.assertEquals(Parser.parseErrorMsg("Passwordconfirm","Missmatch"), eg.passwordconfirm.getErrorMessage());
-        Assert.assertEquals(Parser.parseErrorMsg("Depositlimit","Empty"), eg.depositlimit.getErrorMessage());
-        Assert.assertEquals(Parser.parseErrorMsg("Yearsconfirm","Empty"), eg.yearsconfirm.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Firstname","InvalidLength"), wh.firstname.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Lastname","InvalidLength"), wh.lastname.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Cellphone","InvalidLength"), wh.cellphone.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Address", "InvalidLength"), wh.address.getErrorMessage());
+    }
+
+    @Test
+    public void testEmptyData(){
+        wh.submitRegistration();
+        // expect, actual
+        Assert.assertEquals(Parser.parseErrorMsg("Firstname","Empty"), wh.firstname.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Lastname","Empty"), wh.lastname.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Dob","Empty"), wh.dateOfBirth.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Title","Empty"), wh.title.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Email","Empty"), wh.email.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Country","Empty"), wh.country.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("City","Empty"), wh.city.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Address","Empty"), wh.address.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Zip","Empty"), wh.zip.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Cellphone","Empty"), wh.cellphone.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Username","Empty"), wh.username.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Password","Empty"), wh.password.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Passwordconfirm","Missmatch"), wh.passwordconfirm.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Depositlimit","Empty"), wh.depositlimit.getErrorMessage());
+        Assert.assertEquals(Parser.parseErrorMsg("Yearsconfirm","Empty"), wh.yearsconfirm.getErrorMessage());
        //try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
     }
 
     @Test
     public void testValidData(){
-        eg.firstname.setValue(Randomvalue.alphabetValue(6));
-        eg.lastname.setValue(Randomvalue.alphabetValue(6));
-        eg.dateOfBirth.setValue(Randomvalue.dob());
-        eg.title.setValue(Randomvalue.title());
-        eg.email.setValue(Randomvalue.email());
-        eg.country.setValue(Randomvalue.country());
-        eg.city.setValue(Randomvalue.alphabetValue(6));
-        eg.address.setValue(Randomvalue.alphabetValue(6));
-        eg.zip.setValue(Randomvalue.numberValue(12));
-        eg.cellphone.setValue(Randomvalue.numberValue(7));
-        eg.username.setValue(Randomvalue.alphabetValue(6));
+        wh.firstname.setValue(Randomvalue.alphabetValue(6));
+        wh.lastname.setValue(Randomvalue.alphabetValue(6));
+        wh.dateOfBirth.setValue(Randomvalue.dob());
+        wh.title.setValue(Randomvalue.title());
+        wh.email.setValue(Randomvalue.email());
+        wh.country.setValue(Randomvalue.country());
+        wh.city.setValue(Randomvalue.alphabetValue(6));
+        wh.address.setValue(Randomvalue.alphabetValue(6));
+        wh.zip.setValue(Randomvalue.numberValue(12));
+        wh.cellphone.setValue(Randomvalue.numberValue(7));
+        wh.username.setValue(Randomvalue.alphabetValue(6));
 
         String passwordValue = Randomvalue.numberValue(6);
-        eg.password.setValue(passwordValue);
-        eg.passwordconfirm.setValue(passwordValue);
-        eg.currency.setValue(Randomvalue.currency());
+        wh.password.setValue(passwordValue);
+        wh.passwordconfirm.setValue(passwordValue);
+        wh.currency.setValue(Randomvalue.currency());
         String depositlimit = Randomvalue.deposit();
-        eg.depositlimit.setValue(depositlimit);
+        wh.depositlimit.setValue(depositlimit);
         if (depositlimit != "0"){
-            eg.depositamount.setValue(Randomvalue.deositamount());
+            wh.depositamount.setValue(Randomvalue.deositamount());
         }
-        eg.bonuscode.setValue(Randomvalue.numberValue(7));
-        eg.yearsconfirm.click();
-        eg.submitRegistration();
+        wh.bonuscode.setValue(Randomvalue.numberValue(7));
+        wh.yearsconfirm.click();
+        wh.submitRegistration();
         //try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace(); }
     }
 
@@ -109,4 +121,5 @@ public class Tests {
     public void testParser(){
         System.out.println(Parser.parseErrorMsg("Dob","Empty"));
     }*/
+
 }

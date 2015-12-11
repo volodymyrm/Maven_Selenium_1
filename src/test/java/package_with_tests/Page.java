@@ -37,6 +37,8 @@ public class Page {
 
     public Page(String link) {
         System.setProperty("webdriver.chrome.driver", "\\Chromedriver\\chromedriver.exe");
+
+        //------Setting Window Size
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--window-size=420,1000");
         driver = new ChromeDriver(option);
@@ -44,88 +46,35 @@ public class Page {
         WebElement dynamicElement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*/iframe")));
         driver.switchTo().frame(0);
 
-        firstname = firstname();
-        lastname = lastname();
-        email = email();
-        dateOfBirth = dateOfBirth();
-        title = title();
-        country = country();
-        city = city();
-        address = address();
-        zip = zip();
-        cellphone = cellphone();
-        username = username();
-        password = password();
-        passwordconfirm = passwordconfirm();
-        yearsconfirm = yearsconfirm();
-        currency = currency();
-        depositlimit = depositlimit();
-        depositamount = depositamount();
-        bonuscode = bonuscode();
+        firstname = new Firstname(driver,By.id("firstname"));
+        lastname = new Lastname(driver,By.id("lastname"));
+        email = new Email(driver, By.id("email"));
+        dateOfBirth = new Dob(driver, By.xpath("//div[@class = 'datepicker_day datepicker_field']/select"),By.xpath("//div[@class = 'datepicker_month datepicker_field']/select"), By.xpath("//div[@class = 'datepicker_year datepicker_field']/select"));
+        title = new Title(driver, By.xpath("//*[@id='registrationForm']/div[5]/select"));
+        country = new Country(driver,By.xpath("//*[@id='registrationForm']/div[7]/select"));
+        city = new City(driver, By.id("city"));
+        address = new Address(driver,By.id("address"));
+        zip = new Zip(driver,By.id("zip"));
+        cellphone = new Cellphone(driver,By.id("cellphone"));
+        username = new Username(driver,By.id("userName"));
+        password = new Password(driver,By.id("password"));
+        passwordconfirm = new Passwordconfirm(driver,By.id("passwordConfirm"));
+        yearsconfirm = new Yearsconfirm(driver,By.xpath("//*[@id='registrationForm']/div[19]"));
+        currency = new Currency(driver, By.xpath("//*[@id='registrationForm']/div[15]/select"));
+        depositlimit = new Depositlimit(driver, By.xpath("//*[@id='registrationForm']/div[16]/select"));
+        depositamount = new Depositamount(driver,By.xpath("//*[@id='registrationForm']/div[17]/select"));
+        bonuscode = new Bonuscode(driver, By.id("coupon"));
     }
 
-    public Firstname firstname(){
-        return new Firstname(driver,By.id("firstname"));
-    }
-    public Lastname lastname(){
-        return new Lastname(driver,By.id("lastname"));
-    }
-    public Email email(){
-        return new Email(driver, By.id("email"));
-    }
-    public Title title(){
-        return new Title(driver, By.xpath("//*[@id='registrationForm']/div[5]/select"));
-    }
-    public Country country() {
-        return new Country(driver,By.xpath("//*[@id='registrationForm']/div[7]/select"));
-    }
-    public Dob dateOfBirth(){
-        return new Dob(driver, By.xpath("//div[@class = 'datepicker_day datepicker_field']/select"),By.xpath("//div[@class = 'datepicker_month datepicker_field']/select"), By.xpath("//div[@class = 'datepicker_year datepicker_field']/select"));
-    }
-    public City city(){
-
-        return new City(driver, By.id("city"));
-    }
-    public Address address(){
-        return new Address(driver,By.id("address"));
-    }
-    public Zip zip(){
-        return new Zip(driver,By.id("zip"));
-    }
-    public Cellphone cellphone(){
-        return new Cellphone(driver,By.id("cellphone"));
-    }
-    public Username username(){
-        return new Username(driver,By.id("userName"));
-    }
-    public Password password(){
-        return new Password(driver,By.id("password"));
-    }
-    public Passwordconfirm passwordconfirm(){
-        return new Passwordconfirm(driver,By.id("passwordConfirm"));
-    }
-    public Currency currency(){
-        return new Currency(driver, By.xpath("//*[@id='registrationForm']/div[15]/select"));
-    }
-    public Yearsconfirm yearsconfirm(){
-        return new Yearsconfirm(driver,By.xpath("//*[@id='registrationForm']/div[19]"));
-    }
-    public Depositlimit depositlimit(){
-        return new Depositlimit(driver, By.xpath("//*[@id='registrationForm']/div[16]/select"));
-    }
-    public Depositamount depositamount(){
-        return new Depositamount(driver,By.xpath("//*[@id='registrationForm']/div[17]/select"));
-    }
-    public Bonuscode bonuscode(){
-        return new Bonuscode(driver, By.id("coupon"));
-    }
     public void close(){
         driver.quit();
     }
+
     public Page submitEmailSubscription(){
         driver.findElement(emailSubscription).click();
         return this;
     }
+
     public Page submitRegistration() {
         driver.findElement(regButton).click();
         return this;
